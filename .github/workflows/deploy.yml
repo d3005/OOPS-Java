@@ -42,11 +42,10 @@ jobs:
         DB_NAME: test_database
         CORS_ORIGINS: "*"
     
-    - name: Deploy to Render (or your hosting service)
-      # Add your deployment logic here
+    - name: Deploy to Render
       run: |
         echo "Backend deployment step"
-        # Example: Deploy to Render, Heroku, AWS, etc.
+        # Add your deployment logic here
 
   # Frontend Deployment
   frontend:
@@ -80,18 +79,3 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./frontend/build
-        cname: oops-app.netlify.app  # Optional: custom domain
-    
-    - name: Deploy to Netlify (alternative)
-      if: false  # Set to true to use Netlify instead
-      uses: nwtgck/actions-netlify@v2
-      with:
-        publish-dir: './frontend/build'
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        deploy-message: ${{ github.event.head_commit.message }}
-        production-deploy: true
-        enable-pull-request-comment: false
-        enable-github-deployment: true
-      env:
-        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
