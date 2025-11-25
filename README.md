@@ -112,6 +112,52 @@ DB_NAME=oops_database
 4. Add tests if applicable
 5. Submit a pull request
 
+## Deployment
+
+### GitHub Actions Deployment
+
+The project includes GitHub Actions workflows for automated deployment:
+
+#### Frontend Deployment Options
+1. **GitHub Pages** (Free)
+   - Automatically builds and deploys to GitHub Pages
+   - URL: `https://d3005.github.io/OOPS-Java/`
+
+2. **Netlify** (Free tier available)
+   - Requires `NETLIFY_AUTH_TOKEN` and `NETLIFY_SITE_ID` secrets
+   - Custom domain support
+
+#### Backend Deployment Options
+1. **Render** (Free tier available)
+   - Requires `RENDER_SERVICE_ID` and `RENDER_API_KEY` secrets
+   - Automatic deployment on push
+
+2. **Docker Compose** (Self-hosted)
+   ```bash
+   docker-compose up -d
+   ```
+
+### Required GitHub Secrets
+For full deployment, add these secrets to your repository:
+- `BACKEND_URL`: Your deployed backend URL
+- `NETLIFY_AUTH_TOKEN`: Netlify auth token (if using Netlify)
+- `NETLIFY_SITE_ID`: Netlify site ID (if using Netlify)
+- `RENDER_SERVICE_ID`: Render service ID (if using Render)
+- `RENDER_API_KEY`: Render API key (if using Render)
+
+### Manual Deployment
+#### Frontend to GitHub Pages
+```bash
+cd frontend
+npm run build
+# Deploy build folder to GitHub Pages
+```
+
+#### Backend to Render
+1. Connect your GitHub repository to Render
+2. Set environment variables
+3. Auto-deploy on push
+
 ## License
 
 This project is licensed under the MIT License.
